@@ -1,5 +1,6 @@
 // tlv5618_driver_tb.v
 `timescale 1ns / 1ps
+`define VCD_PATH "build/wave.vcd"
 module tlv5618_driver_tb;
     reg         clk = 1;
     reg         rst_n;
@@ -59,7 +60,7 @@ module tlv5618_driver_tb;
 
 
     initial begin
-        $dumpfile("wave.vcd");
+        $dumpfile(`VCD_PATH);
         $dumpvars(0, tlv5618_driver_tb);
     end
 

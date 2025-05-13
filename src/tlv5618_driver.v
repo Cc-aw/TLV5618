@@ -41,8 +41,11 @@ module tlv5618_driver (
         if (~rst_n) begin
             r_set_data <= 16'd0;
         end
-        else begin
+        else if (set_go) begin
             r_set_data <= set_data;
+        end
+        else begin
+            r_set_data <= r_set_data;
         end
     end
 
@@ -110,6 +113,7 @@ module tlv5618_driver (
             set_done <= 0;
         end
     end
+    
     //序列机实现
     always @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
