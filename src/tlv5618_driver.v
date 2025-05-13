@@ -69,11 +69,16 @@ module tlv5618_driver (
         if (~rst_n) begin
             seq_cnt <= 0;
         end
-        else if (seq_cnt == 33) begin
-            seq_cnt <= 0;
+        else if (div_cnt == MCNT_DIV) begin
+            if (seq_cnt == 33) begin
+                seq_cnt <= 0;
+            end
+            else begin
+                seq_cnt <= seq_cnt + 1;
+            end
         end
         else begin
-            seq_cnt <= seq_cnt + 1;
+            seq_cnt <= seq_cnt;
         end
     end
 
